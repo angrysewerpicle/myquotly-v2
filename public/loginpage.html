@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html>
+<head>    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    
+    <meta name="robots" content="noindex, nofollow" />
+    
+    
+    <link rel="stylesheet" href="https://cdn.auth0.com/ulp/react-components/1.65.5/css/main.cdn.min.css" />
+    <style id="custom-styles-container">
+      
+        
+
+body {
+  background: #ffffff;
+  font-family: ulp-font, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif;
+}
+.cb8931550 {
+  background: #ffffff;
+}
+.c0116bc5c.c02e6b324 {
+  background: #D00E17;
+}
+.c0116bc5c.c45eb86a7 {
+  background: #0A8852;
+}
+.cb6b7c993 {
+  background-color: #10a37f;
+  color: #ffffff;
+}
+.cb6b7c993 a,
+.cb6b7c993 a:visited {
+  color: #ffffff;
+}
+.c265bdcc6 {
+  background-color: #0A8852;
+}
+.c84ec2a88 {
+  background-color: #D00E17;
+}
+@supports (mask-image: url('/static/img/branding-generic/copy-icon.svg')) {
+  @supports not (-ms-ime-align: auto) {
+    .ca2397246.c0b7443dc::before {
+      background-color: #D00E17;
+    }
+  }
+}
+.input.cc34b90a0 {
+  border-color: #D00E17;
+}
+.error-cloud {
+  background-color: #D00E17;
+}
+.error-fatal {
+  background-color: #D00E17;
+}
+.error-local {
+  background-color: #D00E17;
+}
+#alert-trigger {
+  background-color: #D00E17;
+}
+      
+    </style>
+    <style>
+      /* By default, hide features for javascript-disabled browsing */
+      /* We use !important to override any css with higher specificity */
+      /* It is also overriden by the styles in <noscript> in the header file */
+      .no-js {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+    </style>
+    <noscript>
+      <style>
+        /* We use !important to override the default for js enabled */
+        /* If the display should be other than block, it should be defined specifically here */
+        .js-required { display: none !important; }
+        .no-js {
+          clip: auto;
+          clip-path: none;
+          height: auto;
+          overflow: auto;
+          position: static;
+          white-space: normal;
+          width: var(--prompt-width);
+        }
+      </style>
+    </noscript>
+    
+<style>
+    @font-face {
+        font-family: "ColfaxAI";
+        src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2) format("woff2"),
+            url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff) format("woff");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "ColfaxAI";
+        src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegularItalic.woff2) format("woff2"),
+            url(https://cdn.openai.com/API/fonts/ColfaxAIRegularItalic.woff) format("woff");
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    @font-face {
+        font-family: "ColfaxAI";
+        src: url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff2) format("woff2"),
+            url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff) format("woff");
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: "ColfaxAI";
+        src: url(https://cdn.openai.com/API/fonts/ColfaxAIBoldItalic.woff2) format("woff2"),
+            url(https://cdn.openai.com/API/fonts/ColfaxAIBoldItalic.woff) format("woff");
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    :root {
+        --font-family: "ColfaxAI",-apple-system,BlinkMacSystemFont,Helvetica,sans-serif;
+        --primary-color: #10a37f;
+        --primary-color-no-override: #10a37f;
+        --action-primary-color: #10a37f;
+        --link-color: #10a37f;
+        --input-box-shadow-depth: 1px;
+        --page-background-color: #ffffff;
+    }
+
+    body {
+        font-family: var(--font-family);
+        background-color: var(--page-background-color);
+    }
+
+    /* Show custom openai logo */
+    .oai-header {
+        position: absolute;
+        top: 32px;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .oai-header svg {
+        width: 32px;
+        height: 32px;
+        fill: #202123;
+    }
+
+    main header > img:first-of-type {
+        display: none;
+    }
+    main > section, main > section > div:first-child {
+        box-shadow: none;
+    }
+    main header > h1 {
+        font-weight: bold !important;
+        font-size: 32px !important;
+    }
+    main a {
+        font-weight: normal !important;
+    }
+    .ulp-alternate-action {
+        text-align: center;
+    }
+    button[type="submit"] {
+        font-family: var(--font-family);
+    }
+
+    
+
+    
+        main header > h1 {
+            margin-bottom: 0 !important;
+        }
+        main header > h1 + div {
+            display: none !important;
+        }
+    
+
+</style>
+</head>
+<body class="_widget-auto-layout">
+    <header class="oai-header">
+        <svg viewBox="140 140 520 520" xmlns="http://www.w3.org/2000/svg"><path d="m617.24 354a126.36 126.36 0 0 0 -10.86-103.79 127.8 127.8 0 0 0 -137.65-61.32 126.36 126.36 0 0 0 -95.31-42.49 127.81 127.81 0 0 0 -121.92 88.49 126.4 126.4 0 0 0 -84.5 61.3 127.82 127.82 0 0 0 15.72 149.86 126.36 126.36 0 0 0 10.86 103.79 127.81 127.81 0 0 0 137.65 61.32 126.36 126.36 0 0 0 95.31 42.49 127.81 127.81 0 0 0 121.96-88.54 126.4 126.4 0 0 0 84.5-61.3 127.82 127.82 0 0 0 -15.76-149.81zm-190.66 266.49a94.79 94.79 0 0 1 -60.85-22c.77-.42 2.12-1.16 3-1.7l101-58.34a16.42 16.42 0 0 0 8.3-14.37v-142.39l42.69 24.65a1.52 1.52 0 0 1 .83 1.17v117.92a95.18 95.18 0 0 1 -94.97 95.06zm-204.24-87.23a94.74 94.74 0 0 1 -11.34-63.7c.75.45 2.06 1.25 3 1.79l101 58.34a16.44 16.44 0 0 0 16.59 0l123.31-71.2v49.3a1.53 1.53 0 0 1 -.61 1.31l-102.1 58.95a95.16 95.16 0 0 1 -129.85-34.79zm-26.57-220.49a94.71 94.71 0 0 1 49.48-41.68c0 .87-.05 2.41-.05 3.48v116.68a16.41 16.41 0 0 0 8.29 14.36l123.31 71.19-42.69 24.65a1.53 1.53 0 0 1 -1.44.13l-102.11-59a95.16 95.16 0 0 1 -34.79-129.81zm350.74 81.62-123.31-71.2 42.69-24.64a1.53 1.53 0 0 1 1.44-.13l102.11 58.95a95.08 95.08 0 0 1 -14.69 171.55c0-.88 0-2.42 0-3.49v-116.68a16.4 16.4 0 0 0 -8.24-14.36zm42.49-63.95c-.75-.46-2.06-1.25-3-1.79l-101-58.34a16.46 16.46 0 0 0 -16.59 0l-123.31 71.2v-49.3a1.53 1.53 0 0 1 .61-1.31l102.1-58.9a95.07 95.07 0 0 1 141.19 98.44zm-267.11 87.87-42.7-24.65a1.52 1.52 0 0 1 -.83-1.17v-117.92a95.07 95.07 0 0 1 155.9-73c-.77.42-2.11 1.16-3 1.7l-101 58.34a16.41 16.41 0 0 0 -8.3 14.36zm23.19-50 54.92-31.72 54.92 31.7v63.42l-54.92 31.7-54.92-31.7z"/></svg>
+    </header><main class="_widget login-id">
+  <section class="c5b56af8f _prompt-box-outer c2d14002d">
+    <div class="c83892ad4 cb0e08e4c">
+      
+    
+      <div class="c8439017a">
+        <header class="c0747f7ef cf92e422b">
+          <div title="OpenAI" id="custom-prompt-logo" style="width: auto !important; height: 60px !important; position: static !important; margin: auto !important; padding: 0 !important; background-color: transparent !important; background-position: center !important; background-size: contain !important; background-repeat: no-repeat !important"></div>
+        
+          <img class="c3badb680 c1304753b" id="prompt-logo-center" src="https://openai.com/content/images/2019/05/openai-avatar.png" alt="OpenAI" />
+        
+          
+            <h1 class="cc9990aac c3216fce5">Welcome</h1>
+          
+        
+          <div class="cd41f1105 c502a40fe">
+            <p class="cc8275a07 c8209dedc">Log in to OpenAI to continue to OpenAI API.</p>
+          </div>
+        </header>
+      
+        <div class="cba4890ae cc94cb3d4">
+          
+        
+          
+            <form method="POST" class="cf017d8ed _form-login-id">
+              <input type="hidden" name="state" value="hKFo2SBhMkpqUVgtY0VEbkhaZ184MUdVak9TM0NKTXZHY3ZNY6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIHFUa0tzcVE5NnhTSVZoeGNEbVdUb0NNY2I1b3k0aWJ2o2NpZNkgRFJpdnNubTJNdTQyVDNLT3BxZHR3QjNOWXZpSFl6d0Q" />
+            
+              <div class="c8a0fb02b c025bf04a">
+                <div class="c1a96d1f9">
+                  <div class="input-wrapper _input-wrapper">
+                    <div class="ca2397246 c01269d16 text c925e0936" data-action-text="" data-alternate-action-text="">
+                      <label class="c04048bbd no-js cfe9686c2 c463d5b65" for="username">
+                        Email address
+                      </label>
+                    
+                      <input class="input ce09e4a4b ca6b0879c" inputMode="email" name="username" id="username" type="text" value="" required autoComplete="username" autoCapitalize="none" spellCheck="false" autoFocus />
+                    
+                      <div class="c04048bbd js-required cfe9686c2 c463d5b65" data-dynamic-label-for="username" aria-hidden="true">
+                        Email address
+                      </div>
+                    </div>
+                  
+                    
+                  </div>
+                
+                  
+                    
+                      <div data-recaptcha-provider="recaptcha_enterprise" data-recaptcha-sitekey="6Lc-wnQjAAAAADa5SPd68d0O3xmj0030uaVzpnXP" data-recaptcha-lang="en" class="ulp-recaptcha-container">
+                        <div class="ulp-recaptcha" id="ulp-recaptcha"></div>
+                      
+                        
+                          <input type="hidden" name="captcha" value="" />
+                        
+                      </div>
+                    
+                  
+                </div>
+              </div>
+            
+              <input class="hide" type="password" autoComplete="off" tabindex="-1" aria-hidden="true" />
+            
+              <input type="hidden" id="js-available" name="js-available" value="false" />
+            
+              <input type="hidden" id="webauthn-available" name="webauthn-available" value="false" />
+            
+              <input type="hidden" id="is-brave" name="is-brave" value="false" />
+            
+              <input type="hidden" id="webauthn-platform-available" name="webauthn-platform-available" value="false" />
+            
+              <div class="ce5b0411e">
+                
+                  <button type="submit" name="action" value="default" class="c8fca5323 cb6b7c993 cee1c07cc c850d9a60 _button-login-id">Continue</button>
+                
+              </div>
+            </form>
+          
+        
+          
+            <div class="ulp-alternate-action  _alternate-action __s16nu9">
+              <p class="cc8275a07 c8209dedc c0281221d">Don&#39;t have an account?
+                <a class="c9e66e30c cc8e77083" href="/u/signup/identifier?state=hKFo2SBhMkpqUVgtY0VEbkhaZ184MUdVak9TM0NKTXZHY3ZNY6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIHFUa0tzcVE5NnhTSVZoeGNEbVdUb0NNY2I1b3k0aWJ2o2NpZNkgRFJpdnNubTJNdTQyVDNLT3BxZHR3QjNOWXZpSFl6d0Q">Sign up</a>
+              </p>
+            </div>
+          
+        
+          
+            <div class="c289d6f17 cff56a739">
+              <span>Or</span>
+            </div>
+          
+        
+          
+            <div class="ce0052778 c9ce1fa93">
+              
+                <form method="post" data-provider="google" class="cf0a1d8ed c5004a5cd c22faf3d3">
+                  <input type="hidden" name="state" value="hKFo2SBhMkpqUVgtY0VEbkhaZ184MUdVak9TM0NKTXZHY3ZNY6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIHFUa0tzcVE5NnhTSVZoeGNEbVdUb0NNY2I1b3k0aWJ2o2NpZNkgRFJpdnNubTJNdTQyVDNLT3BxZHR3QjNOWXZpSFl6d0Q" />
+                
+                  <input type="hidden" name="connection" value="google-oauth2" />
+                
+                  <button type="submit" class="c5b8edce6 c426c38e7 c723b33d7" data-provider="google">
+                    
+                      <span class="c7fe15dc1 c3bee28ca" data-provider="google"></span>
+                    
+                  
+                    <span class="cc341260d">Continue with Google</span>
+                  </button>
+                </form>
+              
+                <form method="post" data-provider="windowslive" class="cf0a1d8ed c5004a5cd c900d52d0">
+                  <input type="hidden" name="state" value="hKFo2SBhMkpqUVgtY0VEbkhaZ184MUdVak9TM0NKTXZHY3ZNY6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIHFUa0tzcVE5NnhTSVZoeGNEbVdUb0NNY2I1b3k0aWJ2o2NpZNkgRFJpdnNubTJNdTQyVDNLT3BxZHR3QjNOWXZpSFl6d0Q" />
+                
+                  <input type="hidden" name="connection" value="windowslive" />
+                
+                  <button type="submit" class="c5b8edce6 c426c38e7 cc6d7cd6e" data-provider="windowslive">
+                    
+                      <span class="c7fe15dc1 c3bee28ca" data-provider="windowslive"></span>
+                    
+                  
+                    <span class="cc341260d">Continue with Microsoft Account</span>
+                  </button>
+                </form>
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+  </section>
+</main>
+<script id="client-scripts" type="text/javascript">
+!function(){var t,v,h,e,n={exports:function(n,a){var r={};function i(t,e,n,r){return t.addEventListener(e,n,r)}function o(t){return"string"==typeof t}function c(t,e){return t.getAttribute(e)}function u(t,e,n){return t.setAttribute(e,n)}return{addClass:function(t,e){if(t.classList)return t.classList.add(e);var n=t.className.split(" ");-1===n.indexOf(e)&&(n.push(e),t.className=n.join(" "))},toggleClass:function(t,e){if(t.classList)return t.classList.toggle(e);var n=t.className.split(" "),r=n.indexOf(e);-1!==r?n.splice(r,1):n.push(e),t.className=n.join(" ")},addClickListener:function(t,e){return i(t,"click",e)},addEventListener:i,getAttribute:c,getElementById:function(t){return a.getElementById(t)},getParent:function(t){return t.parentNode},isString:o,loadScript:function(t){var e=a.createElement("script");e.src=t,e.async=!0,a.body.appendChild(e)},poll:function(t){var i=t.interval||2e3,e=t.url||n.location.href,o=t.condition||function(){return!0},c=t.onSuccess||function(){},u=t.onError||function(){};return setTimeout(function r(){var a=new XMLHttpRequest;return a.open("GET",e),a.setRequestHeader("Accept","application/json"),a.onload=function(){if(200===a.status){var t="application/json"===a.getResponseHeader("Content-Type").split(";")[0]?JSON.parse(a.responseText):a.responseText;return o(t)?c():setTimeout(r,i)}if(429!==a.status)return u({status:a.status,responseText:a.responseText});var e=1e3*Number.parseInt(a.getResponseHeader("X-RateLimit-Reset")),n=e-(new Date).getTime();return setTimeout(r,i<n?n:i)},a.send()},i)},querySelector:function(t,e){return o(t)?a.querySelector(t):t.querySelector(e)},querySelectorAll:function(t,e){var n=o(t)?a.querySelectorAll(t):t.querySelectorAll(e);return Array.prototype.slice.call(n)},removeClass:function(t,e){if(t.classList)return t.classList.remove(e);var n=t.className.split(" "),r=n.indexOf(e);-1!==r&&(n.splice(r,1),t.className=n.join(" "))},setAttribute:u,removeAttribute:function(t,e){return t.removeAttribute(e)},swapAttributes:function(t,e,n){var r=c(t,e),a=c(t,n);u(t,n,r),u(t,e,a)},setGlobalFlag:function(t,e){r[t]=!!e},getGlobalFlag:function(t){return!!r[t]},preventFormSubmit:function(t){t.stopPropagation(),t.preventDefault()},matchMedia:function(t){return"function"!=typeof n.matchMedia&&n.matchMedia(t).matches},dispatchEvent:function(t,e,n){var r;"function"!=typeof Event?(r=a.createEvent("Event")).initCustomEvent(e,n,!1):r=new Event(e,{bubbles:n}),t.dispatchEvent(r)},setTimeout:setTimeout,timeoutPromise:function(t,a){return new Promise(function(e,n){var r=setTimeout(function(){n(new Error("timeoutPromise: promise timed out"))},t);a.then(function(t){clearTimeout(r),e(t)},function(t){clearTimeout(r),n(t)})})}}}}.exports(window,document),r={exports:function(t,e){for(var i="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_",l=new Uint8Array(256),o=0;o<i.length;o++)l[i.charCodeAt(o)]=o;function c(t){var e,n=new Uint8Array(t),r=n.length,a="";for(e=0;e<r;e+=3)a+=i[n[e]>>2],a+=i[(3&n[e])<<4|n[e+1]>>4],a+=i[(15&n[e+1])<<2|n[e+2]>>6],a+=i[63&n[e+2]];return r%3==2?a=a.substring(0,a.length-1):r%3==1&&(a=a.substring(0,a.length-2)),a}function n(){return navigator&&navigator.credentials&&"undefined"!=typeof PublicKeyCredential}return{base64URLEncode:c,base64URLDecode:function(t){var e,n,r,a,i,o=.75*t.length,c=t.length,u=0,s=new Uint8Array(o);for(e=0;e<c;e+=4)n=l[t.charCodeAt(e)],r=l[t.charCodeAt(e+1)],a=l[t.charCodeAt(e+2)],i=l[t.charCodeAt(e+3)],s[u++]=n<<2|r>>4,s[u++]=(15&r)<<4|a>>2,s[u++]=(3&a)<<6|63&i;return s.buffer},publicKeyCredentialToJSON:function t(e){if(e instanceof Array){var n=[];for(o=0;o<e.length;o+=1)n.push(t(e[o]));return n}if(e instanceof ArrayBuffer)return c(e);if(e instanceof Object){var r={};for(var a in e)r[a]=t(e[a]);return r}return e},str2ab:function(t){for(var e=new ArrayBuffer(t.length),n=new Uint8Array(e),r=0,a=t.length;r<a;r++)n[r]=t.charCodeAt(r);return e},isWebAuthnAvailable:n,isWebauthnPlatformAuthenticatorAvailableAsync:function(t){return n()?t(1e3,PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()):Promise.resolve(!1)}}}}.exports(window,document);({exports:function(t,r,a,e){var n=t(".cd31ffce6"),i=t("#alert-trigger"),o=t(".c622d842a"),c=t(".c5674ff9d"),u=!1;i&&c&&n&&e(n,function(t){var e=t.target===i,n=c.contains(t.target);return e&&!u?(r(o,"show"),void(u=!0)):e&&u||u&&!n?(a(o,"show"),void(u=!1)):void 0})}}).exports(n.querySelector,n.addClass,n.removeClass,n.addClickListener),(v="recaptcha_v2",h="recaptcha_enterprise",(t={}).exports=function(t,a,i,o,c,r){var u,s=a("div[data-recaptcha-sitekey]"),e=a("div[data-recaptcha-sitekey] input"),l=a("#ulp-recaptcha");function f(){return s.getAttribute("data-recaptcha-provider")}function d(t){return e.value=t}function p(t,e){if(t&&t.getBoundingClientRect){if(!r("(max-width: 480px)"))return l.style.transform="",void(l.style.height="");(void 0===e||isNaN(e))&&(e=1.4);var n=72*e;l.style.transform="scale("+e+")",l.style.height=n+"px",l.style.width="10px",s.clientWidth+8<t.getBoundingClientRect().width&&p(t,e-.01)}}s&&(u="recaptchaCallback_"+Math.floor(1000001*Math.random()),window[u]=function(){var t,e,n,r;delete window[u],t=function(t){switch(t){case v:return window.grecaptcha;case h:return window.grecaptcha.enterprise}}(f()),e=t.render(l,{sitekey:s.getAttribute("data-recaptcha-sitekey"),"expired-callback":function(){d(""),i(s,"c0b7443dc"),t.reset(e)},callback:function(t){d(t),o(s,"c0b7443dc")}}),n=function(t){p(t),c(window,"resize",function(){p(t)})},r=setInterval(function(){var t=a("#ulp-recaptcha iframe");if(t)return clearInterval(r),n(t)},200)},t(function(t,e,n){switch(t){case v:return"https://www.recaptcha.net/recaptcha/api.js?hl="+e+"&onload="+n;case h:return"https://www.recaptcha.net/recaptcha/enterprise.js?render=explicit&hl="+e+"&onload="+n}}(f(),s.getAttribute("data-recaptcha-lang"),u)))},t.exports)(n.loadScript,n.querySelector,n.addClass,n.removeClass,n.addEventListener,n.matchMedia),((e={}).exports=function(r,t,a,i,o,c,u,s,n,l){function f(t){var e=t.target,n=c(e);e.value||l(e,"data-autofilled")?i(n,"c5786b49b"):o(n,"c5786b49b")}function d(t){var e=t.target;"onAutoFillStart"===t.animationName&&(n(e,"data-autofilled",!0),s(t.target,"change",!0),a(e,"keyup",p,{once:!0}))}function p(t){var e=t.target;n(e,"data-autofilled","")}if(r("body._simple-labels"))return t(".c04048bbd.no-js").forEach(function(t){o(t,"no-js")}),void t(".c04048bbd.js-required").forEach(function(t){i(t,"hide")});t(".ca2397246:not(.cb7514801):not(disabled)").forEach(function(t){i(t,"c15fce3c6");var e,n=r(t,".input");n.value&&i(t,"c5786b49b"),a(t,"change",f),a(n,"blur",f),a(n,"animationstart",d),e=n,u(function(){e.value&&s(e,"change",!0)},100)})},e.exports)(n.querySelector,n.querySelectorAll,n.addEventListener,n.addClass,n.removeClass,n.getParent,n.setTimeout,n.dispatchEvent,n.setAttribute,n.getAttribute),{exports:function(t,e,n,r,a,i){function o(t){var e=n("submitted");r("submitted",!0),e?a(t):"apple"===i(t.target,"data-provider")&&setTimeout(function(){r("submitted",!1)},2e3)}var c=t("form");c&&c.forEach(function(t){e(t,"submit",o)})}}.exports(n.querySelectorAll,n.addEventListener,n.getGlobalFlag,n.setGlobalFlag,n.preventFormSubmit,n.getAttribute),{exports:function(e,t,n){var r=e("form._form-detect-browser-capabilities"),a=e("main.login-id");if(r||a){var i=t.isWebAuthnAvailable();e("#webauthn-available").value=i?"true":"false",e("#js-available").value="true",navigator.brave?navigator.brave.isBrave().then(function(t){e("#is-brave").value=t,o()}):o()}function o(){i?t.isWebauthnPlatformAuthenticatorAvailableAsync(n).then(function(t){e("#webauthn-platform-available").value=t?"true":"false",r&&r.submit()}).catch(function(t){e("#webauthn-platform-available").value="false",r&&r.submit()}):(e("#webauthn-platform-available").value="false",r&&r.submit())}}}.exports(n.querySelector,r,n.timeoutPromise)}();
+</script>
+<script type="text/javascript">
+        function updateHeader(text) {
+            const $h1 = document.querySelector('main header > h1');
+            if ($h1) {
+                $h1.innerText = text;
+            }
+        }
+        
+        
+            updateHeader('Welcome back');
+        
+        
+        
+    </script>
+</body>
+</html>

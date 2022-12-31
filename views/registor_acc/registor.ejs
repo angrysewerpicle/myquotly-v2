@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        :root {
+            --font-family: "ColfaxAI",-apple-system,BlinkMacSystemFont,Helvetica,sans-serif;
+            --primary-color: #10a37f;
+            --primary-color-no-override: #10a37f;
+            --action-primary-color: #10a37f;
+            --link-color: #10a37f;
+            --input-box-shadow-depth: 1px;
+            --page-background-color: #ffffff;
+        }
+        body {
+        font-family: var(--font-family);
+        background-color: var(--page-background-color);
+        }
+    </style>
+</head>
+<body>
+    <class class="cool-form">
+        <form action="/registor" method="post">
+            <div>
+                <input required="true" placeholder="email"name='email'>
+            </div>
+            <div>
+                <input type="password" required="true" placeholder="password"name='password'>
+            </div>
+            <div>
+                <button type="submit">Create Acc</button>
+            </div>
+        </form>
+    </class>
+</body>
+</html>

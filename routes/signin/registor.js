@@ -87,8 +87,8 @@ router.get('/verify/:userId/:uniqueString', (req, res) => {
                 const hashedUniqueString = result[0].uniqueString
 
                 if (expiresAt < Date.now()){
-                    Login.deleteOne({userId})
-                        .then((result) => {
+                    VerifLogin.deleteOne({userId})
+                        .then(() => {
                             Login.deleteOne({_id: userId})
                                 .then(res => {
                                     res.render('registor_acc/verify', {error: 'Link has expired. Please sign up again.'})
@@ -105,8 +105,8 @@ router.get('/verify/:userId/:uniqueString', (req, res) => {
                 } else {
                     //validate record exists
                     //first compare hased unique string
-                    console.log(uniqueString)
-                    console.log(hashedUniqueString)
+                    //console.log(uniqueString)
+                    //console.log(hashedUniqueString)
                     bcrypt.compare(uniqueString, hashedUniqueString)
                         .then((result) => {
                             if (result) {
@@ -154,16 +154,18 @@ router.post('/', async (req, res) => {  // Get the 'first' field from the reques
 
     var res1, res2, res3, res4, res5 = false
 
-    async function setres(re1, re2, re3, re4) {
+    async function setres(re1, re2, re3, re4, re5) {
         if (re1){
             res.render('errorpage', {error: "Empty input!"})
         } else if (re2) {
             res.render('errorpage', {error: "incorrect email format!"})
         } else if (re3) {
-            res.render('errorpage', {error: "check your email to verify this account!"})
+            res.render("errorpage", {error:"password needs to be between 8 and 16 chars, have a special char, uppercase, and a number"})
         } else if (re4) {
+            res.render('errorpage', {error: "check your email to verify this account!"})
+        } else if(re5){
             res.render('errorpage', {error: "email already exists!"})
-        } else {
+        } else{
             const login = new Login()
 
             const hashedPass = await bcrypt.hash(password, 10)
@@ -191,26 +193,26 @@ router.post('/', async (req, res) => {  // Get the 'first' field from the reques
         //res.render('errorpage', {error: "incorrect email format!"})
         //return // res2
         res2 = true
+    } else if (!(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/.test(password))) {
+        res3 = true
     }
 
     
     try{
 
-        const doesemailexist = await Login.exists({ email: email }).then((result) => {
-            if (result != null) {
-                if (!result.verified) {
-                    //res.render('errorpage', {error: "check your email to verify this account!"})
-                    //return // res3
-                    res3 = true
+        await Login.find({ email: email })
+            .then((result) => {
+                //console.log(result)
+                if (result.length > 0) {
+                    if (!result[0].verified) {
+                        //res.render('errorpage', {error: "check your email to verify this account!"})
+                        //return // res3
+                        res4 = true
+                    } else {
+                        res5 = true
+                    }
                 }
-            }
-        })
-        //console.log(test)
-
-        if (doesemailexist) {
-            res.render('errorpage', {error: "email already exists!"}) //res4
-            res4 = true
-        }
+            })
 
         //hopefully tbis sends the right responce :()
         setres(res1, res2, res3, res4, res5)

@@ -1,33 +1,42 @@
-   try{
-        const login = new Login()
+    <header id="header" class="position-absolute w-100 header-jumbotron color-fg" style="z-index:1">
+        <nav class="nav" data-url="/home/">
+            <div class="container">
+                <div class="nav-row row align-items-start align-items-sm-center">
+                    <div class="col-6 col-sm nav-symbol-wrap">
+                        <a href="/"class="nav-symbol">MyQuotly logo</a>
+                    </div>
+                    <div class="col-6 col-sm-auto small-caps">
+                        <ul class="d-none d-sm-flex flex-row align-items-center justify-content-between">
 
-        const doesemailexist = await Login.exists({ email: email }).then((result) => {
-            if (result != null) {
-                if (!result.verified) {
-                    res.render('errorpage', {error: "check your email to verify this account!"})
-                    return
-                }
-            }
-        })
-        console.log(test)
+                            <li class="ml-sm-1.5 ml-md-1.75" style="margin-top:0.5px"><a class="nav-link " href="/api/"
+                                    data-slug="api">API</a></li>
 
-        if (doesemailexist) {
-            res.render('errorpage', {error: "email already exists!"})
-            return
-        }
+                            <li class="ml-sm-1.5 ml-md-1.75" style="margin-top:0.5px"><a class="nav-link "
+                                    href="/research/" data-slug="research">Research</a></li>
 
-        const hashedPass = await bcrypt.hash(password, 10)
-        login.email = email
-        login.password = hashedPass
-        login.verified = false
+                            <li class="ml-sm-1.5 ml-md-1.75" style="margin-top:0.5px"><a class="nav-link " href="/blog/"
+                                    data-slug="blog">Blog</a></li>
 
-        await login.save().then(result => {
-            //console.log(result)
-            sendVerificationemail(result, res)
-        })
-        //res.redirect('/login')
-    } catch(e){
-        res.render('errorpage', {error: e})
-        console.log(e)
-    }
-})
+                            <li class="ml-sm-1.5 ml-md-1.75" style="margin-top:0.5px"><a class="nav-link "
+                                    href="/about/" data-slug="about">About</a></li>
+                        </ul>
+                        <ul class="d-sm-none" style="margin-top:-1px">
+
+                            <li class="mb-0.25" style="margin-top:0.5px"><a class="nav-link " href="/api/"
+                                    data-slug="api">API</a></li>
+
+                            <li class="mb-0.25" style="margin-top:0.5px"><a class="nav-link " href="/research/"
+                                    data-slug="research">Research</a></li>
+
+                            <li class="mb-0.25" style="margin-top:0.5px"><a class="nav-link " href="/blog/"
+                                    data-slug="blog">Blog</a></li>
+
+                            <li class="mb-0.25" style="margin-top:0.5px"><a class="nav-link " href="/about/"
+                                    data-slug="about">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>

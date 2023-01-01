@@ -16,19 +16,28 @@ router.post('/', (req, res) => {  // Get the 'first' field from the request body
     // selecting the `name` and `occupation` fields
     //query.select('name occupation');
     // execute the query at a later time
-    query.exec(async function (err, login) {
-        if (err) return handleError(err);
-        // Prints "Space Ghost is a talk show host."
+    query.exec(async (err, login) => {
+        if (err) {
+            console.log(e)
+            res.render('errorpage', {error: "internal server error"})
+            return
+        }
         try {
-            console.log(login.password)
-            if (await bycrypt.compare(req.body.password, login.password)) {
-                res.send("login works")
+            if (login == null){
+                res.render('errorpage', {error: "Acount does not exist!"})
+            } else if (!login.verified) {
+                res.render('errorpage', {error: "please verify your email first. Check your inbox."})
             } else {
-                res.send("login failed")
+                console.log(login.password)
+                if (await bycrypt.compare(req.body.password, login.password)) {
+                    res.send("login works")
+                } else {
+                    res.render('errorpage', {error: "incorrect password or username"})
+                }
             }
         } catch(e) {
             res.send('error')
-            //console.log(e)
+            console.log(e)
         }
     });
 })

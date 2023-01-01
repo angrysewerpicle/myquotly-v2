@@ -9,10 +9,6 @@ const verifloginSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  verified: {
-    type: String,
-    required: true
-  },
   createdAt: {
     type: Date,
     required: true

@@ -1,0 +1,33 @@
+   try{
+        const login = new Login()
+
+        const doesemailexist = await Login.exists({ email: email }).then((result) => {
+            if (result != null) {
+                if (!result.verified) {
+                    res.render('errorpage', {error: "check your email to verify this account!"})
+                    return
+                }
+            }
+        })
+        console.log(test)
+
+        if (doesemailexist) {
+            res.render('errorpage', {error: "email already exists!"})
+            return
+        }
+
+        const hashedPass = await bcrypt.hash(password, 10)
+        login.email = email
+        login.password = hashedPass
+        login.verified = false
+
+        await login.save().then(result => {
+            //console.log(result)
+            sendVerificationemail(result, res)
+        })
+        //res.redirect('/login')
+    } catch(e){
+        res.render('errorpage', {error: e})
+        console.log(e)
+    }
+})

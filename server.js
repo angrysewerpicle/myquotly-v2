@@ -22,11 +22,15 @@ app.use(expressLayouts)
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected to Mongoose'))
+try {
+    const mongoose = require('mongoose')
+    mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+    const db = mongoose.connection
+    db.on('error', error => console.error(error))
+    db.once('open', () => console.log('Connected to Mongoose'))
+} catch(e) {
+    console.log(e)
+}
 
 app.use('/', indexRouter)
 app.use('/authors', authorRouter)

@@ -30,5 +30,5 @@ what to add to .env:
     git branch -M main
 </div>
 <div>
-    git push -u orgin main
+    git push -u origin main
 </div>

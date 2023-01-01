@@ -27,7 +27,7 @@ what to add to .env:
     git commit -m ""
 </div>
 <div>
-    git breanch -M main
+    git branch -M main
 </div>
 <div>
     git push -u orgin main

@@ -16,3 +16,19 @@ what to add to .env:
 <div>
     EMAIL_SEND_URL=(current root url to website)
 </div>
+<br>
+<div>
+    How to upload so i remember:
+</div>
+<div>
+    git add .
+</div>
+<div>
+    git commit -m ""
+</div>
+<div>
+    git breanch -M main
+</div>
+<div>
+    git push -u orgin main
+</div>

@@ -1,40 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>HTML5 Login Form with validation Example</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="/login-demo/style.css">
 
-    <style>
-        :root {
-            --font-family: "ColfaxAI",-apple-system,BlinkMacSystemFont,Helvetica,sans-serif;
-            --primary-color: #10a37f;
-            --primary-color-no-override: #10a37f;
-            --action-primary-color: #10a37f;
-            --link-color: #10a37f;
-            --input-box-shadow-depth: 1px;
-            --page-background-color: #ffffff;
-        }
-        body {
-        font-family: var(--font-family);
-        background-color: var(--page-background-color);
-        }
-    </style>
 </head>
 <body>
-    <class class="cool-form">
-        <form action="/registor" method="post">
-            <div>
-                <input required="true" placeholder="email"name='email'>
-            </div>
-            <div>
-                <input type="password" required="true" placeholder="password"name='password'>
-            </div>
-            <div>
-                <button type="submit">Create Acc</button>
-            </div>
-        </form>
-    </class>
+<!-- partial:index.partial.html -->
+<div id="login-form-wrap">
+  <h2>Login</h2>
+  <form id="login-form" onsubmit="checkPasswords(); return false;" method="post">
+    <p>
+    <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
+    </p>
+    <p>
+    <input type="password" id="password" name="password" placeholder="Password" required><i class="validation"><span></span><span></span></i>
+    </p>
+    <p>
+    <input type="password" id="password2" name="password2" placeholder="Verify Password" required><i class="validation"><span></span><span></span></i>
+    </p>
+    <p>
+    <input type="submit" id="login" value="Register">
+    </p>
+  </form>
+  <div id="create-account-wrap">
+    <div id="passwordmatch" style="display:none">Passwords do not match</div>
+    <div id="passwordcheck" style="display:none">password needs to be between 8 and 16 characters, have a special character, uppercase, and a number.</div>
+    <div id="emailcheck" style="display:none">Please enter valid email</div>
+    <p>Already have an acount? <a href="/login">Login</a><p>
+  </div><!--create-account-wrap-->
+</div><!--login-form-wrap-->
+<!-- partial -->
+<script>
+    function checkPasswords() {
+        // Get the password fields
+        var password1 = document.getElementById("password");
+        var password2 = document.getElementById("password2");
+        var email = document.getElementById("email")
+
+        // Get the error message element
+        var passwordmatch = document.getElementById("passwordmatch");
+        var passwordcheck = document.getElementById("passwordcheck");
+        var emailcheck = document.getElementById("emailcheck");
+
+        // Check if the passwords are the same
+        if (password1.value == password2.value) {
+            // If they are, submit the form
+            if (/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/.test(password1.value)) {
+                if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+                    //passwordcheck.style.display = "block";
+                    document.forms[0].submit();
+                } else {
+                    emailcheck.style.display = "block";
+                    passwordcheck.style.display = "none";
+                    passwordmatch.style.display = "none";
+                }
+            } else {
+                passwordcheck.style.display = "block";
+                emailcheck.style.display = "none";
+                passwordmatch.style.display = "none";
+            }
+        } else {
+            // If they are not, display an error message
+            passwordmatch.style.display = "block";
+            passwordcheck.style.display = "none";
+            emailcheck.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>

@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="/login-demo/style.css">
 
 </head>
+<% if (locals.error) { %>
+  <script>
+    var error = document.getElementById('error').innerHTML = "<%= error %>"
+  </script>
+<% } %>
 <body>
 <!-- partial:index.partial.html -->
 <div id="login-form-wrap">
   <h2>Error</h2>
   <div id="create-account-wrap">
-    <% if (locals.error) { %>
-    <div id="error" style="display:block"><%= error %></div>
-    <% } %>
+    <div id="error" style="display:block"></div>
     <p>Try going back to the <a href="/">Homepage</a><p>
   </div><!--create-account-wrap-->
 </div><!--login-form-wrap-->

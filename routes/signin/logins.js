@@ -48,9 +48,9 @@ router.post('/', (req, res) => {  // Get the 'first' field from the request body
             } else {
                 //console.log(login.password)
                 if (await bcrypt.compare(req.body.password, login.password)) {
-                    res.send("login works")
+                    res.redirect('/')
                 } else {
-                    res.render('errorpage', {error: "incorrect password or username"})
+                    res.render('login_acc/login', {failed: "incorrect password"})
                 }
             }
         } catch(e) {

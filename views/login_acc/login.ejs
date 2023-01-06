@@ -23,7 +23,10 @@
     </p>
   </form>
   <div id="create-account-wrap">
-    <p>Not a member? <a href="/registor">Create Account</a><p>
+    <% if (locals.failed) { %>
+        <div id="failed" style="display:block; color:red;"><%= failed %></div>
+    <% } %>
+    <p>Not a member? <a href="/register">Create Account</a><p>
   </div><!--create-account-wrap-->
 </div><!--login-form-wrap-->
 <!-- partial -->

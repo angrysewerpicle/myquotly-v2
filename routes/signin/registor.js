@@ -40,7 +40,7 @@ const sendVerificationemail = ({_id, email}, res) => {
         subject: "Verify your email",
         html: `<p> Verify your email address to complete the signup and login to your account.</p><p>This link 
         <b>expires in 6 hours</b>.</p><p>Press <a href=${
-            currentUrl+"registor/verify/"+ _id + "/" + uniqueString}>here</a>
+            currentUrl+"register/verify/"+ _id + "/" + uniqueString}>here</a>
          to proceed.</p>`
     }
     bcrypt.hash(uniqueString, 10)
@@ -57,7 +57,7 @@ const sendVerificationemail = ({_id, email}, res) => {
                     transporter.sendMail(mailoptions)
                         .then(() => {
                             //email sent and verification record saved
-                            res.send('verification email sent')
+                            res.render('registor_acc/request_verify')
                         })
                         .catch((e) =>{
                             console.log(e)
@@ -91,16 +91,16 @@ router.get('/verify/:userId/:uniqueString', (req, res) => {
                         .then(() => {
                             Login.deleteOne({_id: userId})
                                 .then(res => {
-                                    res.render('registor_acc/verify', {error: 'Link has expired. Please sign up again.'})
+                                    res.render('errorpage', {error: 'Link has expired. Please sign up again.'})
                                 })
                                 .catch(e => {
                                     console.log(e)
-                                    res.render('registor_acc/verify', {error: 'error occured while clearing user with expired unique string.'})
+                                    res.render('errorpage', {error: 'error occured while clearing user with expired unique string.'})
                                 })
                         })
                         .catch((e) => {
                             console.log(e)
-                            res.render('registor_acc/verify', {error: 'error occured while clearing expired user verification record.'})
+                            res.render('errorpage', {error: 'error occured while clearing expired user verification record.'})
                         })
                 } else {
                     //validate record exists
@@ -119,30 +119,30 @@ router.get('/verify/:userId/:uniqueString', (req, res) => {
                                             })
                                             .catch((e) => {
                                                 console.log(e)
-                                                res.render('registor_acc/verify', {error: 'error occured while deleting user verification'})
+                                                res.render('errorpage', {error: 'error occured while deleting user verification'})
                                             })
                                     })
                                     .catch((e) => {
                                         console.log(e)
-                                        res.render('registor_acc/verify', {error: 'error occured while updating user record for verification'})
+                                        res.render('errorpage', {error: 'error occured while updating user record for verification'})
                                     })
                             } else {
                                 //existing record but doesnt match
-                                res.render('registor_acc/verify', {error: 'Invalid verification details passed'})
+                                res.render('errorpage', {error: 'Invalid verification details passed'})
                             }
                         })
                         .catch((e) => {
                             console.log(e)
-                            res.render('registor_acc/verify', {error: 'error occured while comparing unique strings.'})
+                            res.render('errorpage', {error: 'error occured while comparing unique strings.'})
                         })
                 }
             } else {
-                res.render('registor_acc/verify', {error: "account record doesn't exist or has been verified already. Please sign up or login"}) 
+                res.render('errorpage', {error: "account record doesn't exist or has been verified already. Please sign up or login"}) 
             }
         })
         .catch((e) => {
             console.log(e)
-            res.render('registor_acc/verify', {error: 'error occured while trying to verify your account'})
+            res.render('errorpage', {error: 'error occured while trying to verify your account'})
         })
 })
 
@@ -162,7 +162,7 @@ router.post('/', async (req, res) => {  // Get the 'first' field from the reques
         } else if (re3) {
             res.render("errorpage", {error:"password needs to be between 8 and 16 chars, have a special char, uppercase, and a number"})
         } else if (re4) {
-            res.render('errorpage', {error: "check your email to verify this account!"})
+            res.render('registor_acc/registor', {error: "check your email to verify this account!"})
         } else if(re5){
             res.render('errorpage', {error: "email already exists!"})
         } else{

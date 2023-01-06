@@ -10,7 +10,7 @@
 <body>
 <!-- partial:index.partial.html -->
 <div id="login-form-wrap">
-  <h2>Login</h2>
+  <h2>Register</h2>
   <form id="login-form" onsubmit="checkPasswords(); return false;" method="post">
     <p>
     <input type="email" id="email" name="email" placeholder="Email Address" required><i class="validation"><span></span><span></span></i>
@@ -26,9 +26,12 @@
     </p>
   </form>
   <div id="create-account-wrap">
-    <div id="passwordmatch" style="display:none">Passwords do not match</div>
-    <div id="passwordcheck" style="display:none">password needs to be between 8 and 16 characters, have a special character, uppercase, and a number.</div>
-    <div id="emailcheck" style="display:none">Please enter valid email</div>
+    <% if (locals.error) { %>
+        <div id="error" style="display:block; color:red;"><%= error %></div>
+    <% } %>
+    <div id="passwordmatch" style="display:none; color:red;">Passwords do not match</div>
+    <div id="passwordcheck" style="display:none; color:red;">password needs to be between 8 and 16 characters, have a special character, uppercase, and a number.</div>
+    <div id="emailcheck" style="display:none; color:red;">Please enter valid email</div>
     <p>Already have an acount? <a href="/login">Login</a><p>
   </div><!--create-account-wrap-->
 </div><!--login-form-wrap-->

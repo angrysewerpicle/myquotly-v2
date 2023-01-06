@@ -9,8 +9,6 @@ const bodyParser = require('body-parser')
 // const methodOverride = require('method-override')
 
 const indexRouter = require('./routes/index')
-const authorRouter = require('./routes/authors')
-const bookRouter = require('./routes/books')
 const loginRouter = require('./routes/signin/logins')
 const registorRouter = require('./routes/signin/registor')
 
@@ -33,10 +31,8 @@ try {
 }
 
 app.use('/', indexRouter)
-app.use('/authors', authorRouter)
-app.use('/books', bookRouter)
 
 app.use('/login', loginRouter)
-app.use('/registor', registorRouter)
+app.use('/register', registorRouter)
 
 app.listen(process.env.PORT || 3000)

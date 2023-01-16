@@ -90,7 +90,7 @@ router.get('/verify/:userId/:uniqueString', (req, res) => {
                     VerifLogin.deleteOne({userId})
                         .then(() => {
                             Login.deleteOne({_id: userId})
-                                .then(res => {
+                                .then(() => {
                                     res.render('errorpage', {error: 'Link has expired. Please sign up again.'})
                                 })
                                 .catch(e => {
